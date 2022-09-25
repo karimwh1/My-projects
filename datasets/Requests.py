@@ -2,20 +2,18 @@ import json
 
 import requests
 from pprint import pprint
-import csv as cv
+import csv
 
 url = 'https://www.vmh.life//_api/biomarkers/'
+url_2 = 'http://www.vmh.life/_api/biomarkers/?page=2'
+url_3 = 'http://www.vmh.life/_api/biomarkers/?page=3'
 
-response = requests.get(url)
+response = requests.get(url_3).json()
 
-data = response.json()
-pprint(data)
+pprint(response)
 
-print(data['results'])
-with open('results_page_1.json','w') as f:
-   cv.dump(data['results'], f , indent= 2)
 
-   """ Question: I don't know how to pull the data from all the pages"""
+""" Question: I don't know how to pull the data from all the pages"""
 
 
 
